@@ -27,10 +27,8 @@ class DB {
         // init json db
         this.db = {};
         // connect and load db to json db
-        /*
         this.connectDB(host, user, pass, db);
         this.loadDB();
-        */
     }
     
     connectDB(host, user, pass, db) {
