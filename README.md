@@ -1,7 +1,7 @@
 # NSEL
 Make nodejs express server & json structured database in 3 lines!
 ```javascript
-const NSEL = require('nsel'); // important! to import my class in package.json add "type": "module"
+const NSEL = require('nsel');
 
 // NSEL INIT
 const db = new NSEL.DB('host', 'user', 'password', 'database'); // NSEL.DB class
