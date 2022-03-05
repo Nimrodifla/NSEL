@@ -1,11 +1,12 @@
+
 const NSEL = require('./NSEL.js');
 
 // NSEL INIT
-const db = new NSEL.DB('host', 'user', 'password', 'database'); // NSEL.DB class
-const json = db.db; // json data structure
-const app = NSEL.listen(); // start listening (default: port 80 || process.env.PORT)
+const [app, db] = NSEL.quick('host', 'user', 'password', 'db');
 
 // End Points
 app.get('/', (req, res)=>{
-    res.send('hello world');
+    db.jdb = {'data': 'base'}; // edit database
+    db.saveDB(); // save it
+    res.send(db.jdb); // send response
 });

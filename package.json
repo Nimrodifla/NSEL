@@ -1,6 +1,6 @@
 {
   "name": "nsel",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "easy express server & sql db",
   "main": "NSEL.js",
   "scripts": {

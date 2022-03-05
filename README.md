@@ -1,21 +1,21 @@
 # NSEL
-Make nodejs express server & json structured database in 3 lines!
+Make nodejs express server & json structured database in 1 line!
 ```javascript
-const NSEL = require('nsel');
+const NSEL = require('./NSEL.js');
 
 // NSEL INIT
-const db = new NSEL.DB('host', 'user', 'password', 'database'); // NSEL.DB class
-const json = db.db; // json data structure
-const app = NSEL.listen(); // start listening (default: port 80 || process.env.PORT)
+const [app, db] = NSEL.quick('host', 'user', 'password', 'db');
 
 // End Points
 app.get('/', (req, res)=>{
-    res.send('hello world');
+    db.jdb = {'data': 'base'}; // edit database
+    db.saveDB(); // save it
+    res.send(db.jdb); // send response
 });
 ```
 
 ## Database
-NSEL.DB.db is a json object, that can be saved in your mysql db with the:
+NSEL.DB.jdb is a json object, that can be saved in your mysql db with the:
 ```javascript
 db.saveDB();
 ```
