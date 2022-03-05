@@ -1,7 +1,7 @@
 {
   "name": "nsel",
-  "version": "1.1.3",
-  "description": "easy express server & sql db",
+  "version": "1.1.5",
+  "description": "1 line express server & sql db",
   "main": "NSEL.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -29,9 +29,9 @@ let num = db.jdb['a']['b']; // get
 ```
 with this syntax:
 ```javascript
-db.shieldSetter(['a', 'b'], 8); // set
-let num = db.shieldGetter(['a', 'b']); // get
+db.set(['a', 'b'], 8); // set
+let num = db.get(['a', 'b']); // get
 ```
-the shieldSetter & shieldGetter functions make sure that undefined objects will be set to {}.
+the set & get functions make sure that undefined objects will be set to {}.
 that way you can write entire imaginery pathes that doesn't exist and they will be created!
-another amazing thing is that shieldSetter automaticaly saves the db (unless you set the last parameter to: false).
+another amazing thing is that the set function automaticaly saves the db (unless you set the last parameter to false).

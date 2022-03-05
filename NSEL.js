@@ -89,7 +89,7 @@ class DB {
     }
 
     //if a json path is undefined, make it {}.
-    shieldSetter(pathList, value, save_db = true)
+    set(pathList, value, save_db = true)
     {
         let obj = this.jdb;
         let path;
@@ -113,7 +113,7 @@ class DB {
             this.saveDB()
     }
 
-    shieldGetter(pathList)
+    get(pathList)
     {
         let obj = this.jdb;
         let path;
@@ -124,7 +124,10 @@ class DB {
             let temp = obj[path];
             if (temp == undefined)
             {
-                obj[path] = {};
+                if (pathList.length == 0)
+                    obj[path] = undefined;
+                else
+                    obj[path] = {};
             }
             obj = obj[path];
         }
