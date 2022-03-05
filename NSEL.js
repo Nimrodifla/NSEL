@@ -80,6 +80,8 @@ function listen(port = PORT)
 
         console.log('~~~ NSEL App Active ~~~');
     });
+
+    return app;
 }
 
 function htmlReplace(htmlPath, src, dst)
