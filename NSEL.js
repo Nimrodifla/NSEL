@@ -112,6 +112,25 @@ class DB {
         if (save_db)
             this.saveDB()
     }
+
+    shieldGetter(pathList)
+    {
+        let obj = this.jdb;
+        let path;
+        while (pathList.length > 0)
+        {
+            path = pathList[0];
+            pathList.splice(0, 1);
+            let temp = obj[path];
+            if (temp == undefined)
+            {
+                obj[path] = {};
+            }
+            obj = obj[path];
+        }
+        
+        return obj;
+    }
 }
 
 DB.prototype.toJson = function dbToJson() {
