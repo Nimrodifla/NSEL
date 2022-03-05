@@ -3,9 +3,10 @@ NSEL - Nimi Server Express Library
 ~ By: Nimi
 */
 
-import * as fs from 'fs';
-import * as mysql from 'mysql';
-import express from 'express';
+const fs = require('fs');
+const mysql = require('mysql');
+const express = require('express');
+
 const PORT = process.env.PORT || 80;
 const app = express();
 
@@ -26,8 +27,10 @@ class DB {
         // init json db
         this.db = {};
         // connect and load db to json db
+        /*
         this.connectDB(host, user, pass, db);
         this.loadDB();
+        */
     }
     
     connectDB(host, user, pass, db) {
@@ -96,4 +99,4 @@ function htmlReplace(htmlPath, src, dst)
     return html;
 }
 
-export {DB, app, listen, htmlReplace, express}; //export class so it can be imported
+module.exports = {DB, app, listen, htmlReplace, express}; //export class so it can be imported

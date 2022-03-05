@@ -1,4 +1,4 @@
-import * as NSEL from './NSEL.js'; // important! to import my class in package.json add "type": "module"
+const NSEL = require('./NSEL.js');
 
 // NSEL INIT
 const db = new NSEL.DB('host', 'user', 'password', 'database'); // NSEL.DB class
