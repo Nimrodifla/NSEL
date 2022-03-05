@@ -6,7 +6,6 @@ const [app, db] = NSEL.quick('host', 'user', 'password', 'db');
 
 // End Points
 app.get('/', (req, res)=>{
-    db.jdb = {'data': 'base'}; // edit database
-    db.saveDB(); // save it
-    res.send(db.jdb); // send response
+    db.shieldSetter(['users', 'user1', 'password'], '1234');
+    res.send(db.toJson()); // send response
 });

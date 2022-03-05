@@ -19,8 +19,9 @@ class DB {
     sqlDataId;
     sqlColName;
     sqlTableName;
+
     constructor(host, user, pass, db, dataId = 0, colName = 'data', tableName = 'info', load = true) {
-        this.prevDb = -8;
+        this.prevDb = -1;
         // sql db settings
         this.sqlDataId = dataId;
         this.sqlColName = colName;
@@ -83,9 +84,38 @@ class DB {
     }
 
     resetDB() {
-        this.jdb = {};
-        this.saveDB();
+        this.jdb = {}; // clear db
+        this.saveDB(); // save the cleared db
     }
+
+    //if a json path is undefined, make it {}.
+    shieldSetter(pathList, value, save_db = true)
+    {
+        let obj = this.jdb;
+        let path;
+        while (pathList.length > 0)
+        {
+            path = pathList[0];
+            pathList.splice(0, 1);
+            let temp = obj[path];
+            if (temp == undefined)
+            {
+                if (pathList.length == 0)
+                    obj[path] = value;
+                else
+                    obj[path] = {};
+            }
+            if (pathList.length > 0)
+                obj = obj[path];
+        }
+        
+        if (save_db)
+            this.saveDB()
+    }
+}
+
+DB.prototype.toJson = function dbToJson() {
+    return (this.jdb);
 }
 
 function listen(port = PORT)
@@ -121,4 +151,4 @@ function htmlReplace(htmlPath, src, dst)
     return html;
 }
 
-module.exports = {DB, app, listen, quick, htmlReplace, express}; //export class so it can be imported
+module.exports = {DB, app, listen, quick, htmlReplace, express};
